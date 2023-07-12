@@ -11,12 +11,19 @@ export default function Home() {
   });
 
   useEffect(() => {
+    fetchPessoas();
+  }, []);
+
+  function fetchPessoas() {
     axios.get('https://devwebapireact.eduardogoncalv5.repl.co')
       .then(res => {
         const dadosPessoas = res.data;
         setPessoas(dadosPessoas);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar as pessoas:', error);
       });
-  }, []);
+  }
 
   function enviarDadosAtualizados() {
     const url = 'https://devwebapireact.eduardogoncalv5.repl.co';
@@ -35,6 +42,7 @@ export default function Home() {
           nome: '',
           email: '',
         }); // Limpa os campos de input
+        fetchPessoas(); // Busca novamente os dados atualizados da API
       })
       .catch(error => {
         console.error('Erro ao atualizar os dados:', error);
@@ -114,8 +122,6 @@ export default function Home() {
           </tbody>
         </Table>
       </div>
-
-      <div></div>
     </Fragment>
   );
 }
