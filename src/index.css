@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+body {
+    background-color: #6527BE;
+    font-family: 'Poppins', sans-serif;
+     
+  }
+  
+
+
+
+  h1{
+    color: #45CFDD;
+  }
+  
+  
+  .App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #6527BE;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  th, td, tr{
+    color: #fff;
+  }
+
+
+  

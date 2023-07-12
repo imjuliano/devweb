@@ -78,8 +78,9 @@ export default function Home() {
   };
 
   return (
-    <Fragment>
-      <div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <div style={{ marginBottom: '20px' }}>
+        <h1>Formulário de Cadastro</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicNome">
             <Form.Label>Nome</Form.Label>
@@ -97,7 +98,8 @@ export default function Home() {
         </Form>
       </div>
 
-      <div>
+      <div style={{ marginBottom: '20px' }}>
+        <h1>Dados da API</h1>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -107,7 +109,6 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            <h1>Dados da API</h1>
             {pessoas.map((pessoa) => (
               <tr key={pessoa.id}>
                 <td>{pessoa.nome}</td>
@@ -122,6 +123,6 @@ export default function Home() {
           </tbody>
         </Table>
       </div>
-    </Fragment>
+    </div>
   );
 }

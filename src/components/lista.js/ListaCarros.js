@@ -10,7 +10,7 @@ export default function ListaCarros(){
             const dadosPessoas = res.data
             setPessoas(dadosPessoas)
         })
-    }, []) // Certifique-se de passar um array vazio como dependência para o useEffect
+    }, []) 
 
-    return null; // ou qualquer outro conteúdo que você queira renderizar
+    return null;
 }
