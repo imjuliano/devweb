@@ -19,7 +19,7 @@ export default function Home() {
   }, []);
 
   function enviarDadosAtualizados() {
-    const url = 'https://devwebapireact.eduardogoncalv5.repl.co'; // Substitua pela sua URL de API
+    const url = 'https://devwebapireact.eduardogoncalv5.repl.co';
 
     const dadosAtualizados = {
       email: user.email,
@@ -29,25 +29,29 @@ export default function Home() {
     axios.post(url, dadosAtualizados)
       .then(response => {
         console.log('Dados atualizados com sucesso:', response.data);
-        // Realize outras ações de acordo com sua necessidade após a atualização bem-sucedida
+        const novaPessoa = response.data; // Novo objeto adicionado à API
+        setPessoas([...pessoas, novaPessoa]); // Adiciona a nova pessoa à lista
+        setUsers({
+          nome: '',
+          email: '',
+        }); // Limpa os campos de input
       })
       .catch(error => {
         console.error('Erro ao atualizar os dados:', error);
-        // Lide com o erro de acordo com sua necessidade
       });
   }
 
   function excluirInformacao(id) {
-    const url = `https://devwebapireact.eduardogoncalv5.repl.co/${id}`; // Substitua pela sua URL de API
+    const url = `https://devwebapireact.eduardogoncalv5.repl.co/${id}`;
 
     axios.delete(url)
       .then(response => {
         console.log(`Informação com o ID ${id} excluída com sucesso`);
-        // Realize outras ações de acordo com sua necessidade após a exclusão bem-sucedida
+        const novaListaPessoas = pessoas.filter(pessoa => pessoa.id !== id);
+        setPessoas(novaListaPessoas);
       })
       .catch(error => {
         console.error(`Erro ao excluir a informação com o ID ${id}`, error);
-        // Lide com o erro de acordo com sua necessidade
       });
   }
 
@@ -64,16 +68,6 @@ export default function Home() {
       email: event.target.value,
     }));
   };
-
-  function submit() {
-    const pessoa = {
-      nome: user.nome,
-      email: user.email,
-    };
-
-    // Faça a chamada ao axios.post ou axios.put para enviar os dados atualizados
-    // Você pode usar a lógica similar à função enviarDadosAtualizados()
-  }
 
   return (
     <Fragment>
